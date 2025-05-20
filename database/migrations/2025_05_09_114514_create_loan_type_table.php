@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loan_type', function (Blueprint $table) {
+        Schema::create('loan_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -36,6 +36,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loan_type');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('loan_types');
+        Schema::enableForeignKeyConstraints();
     }
 };

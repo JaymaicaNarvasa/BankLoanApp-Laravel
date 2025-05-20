@@ -13,6 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_statuses', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -30,6 +31,8 @@ return new class extends Migration
 
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('user_statuses');
+        Schema::enableForeignKeyConstraints();
     }
 };

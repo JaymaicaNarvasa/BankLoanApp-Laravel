@@ -14,9 +14,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
-            $table->foreignId('status_id')->constrained('user_statuses')->onDelete('cascade');
+            $table->foreignId('user_status_id')->constrained('user_statuses')->onDelete('cascade');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
@@ -30,14 +31,14 @@ return new class extends Migration
         $users = [
             [
                 'first_name' => 'Admin',
-                'last_name' => 'Admin',
+                'last_name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'phone_number' => '+63798887567',
                 'username' => 'admin',
                 'password' => Hash::make('password'),
                 'address' => 'Sample',
                 'role_id' => 1,
-                'status_id' => 1,
+                'user_status_id' => 1,
             ],
         ];
 
@@ -51,6 +52,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('users');
+        Schema::enableForeignKeyConstraints();
     }
 };
