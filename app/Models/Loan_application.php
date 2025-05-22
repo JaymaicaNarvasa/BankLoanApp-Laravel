@@ -13,10 +13,7 @@ class Loan_application extends Model
         'loan_status_id',
         'loan_type_id',
         'amount',
-        'tenure_value',
-        'tenure_unit',
-        'interest_rate', 
-        'application_date'
+        'interest_rate'
 
     ];
 

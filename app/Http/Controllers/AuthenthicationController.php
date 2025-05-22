@@ -17,6 +17,7 @@ class AuthenthicationController extends Controller
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'phone_number' => ['required', 'string', 'max:13'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'address' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'confirm_password' => ['required', 'same:password'],
         ]);
@@ -27,9 +28,10 @@ class AuthenthicationController extends Controller
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'username' => $request->username,
+            'address' => $request->address,
             'password' => Hash::make($request->password),
             'role_id' => 1, 
-            'status_id' => 1,
+            'user_status_id' => 1,
         ]);
         return response()->json(['message' => 'User Created Successfully!', 'user' => $user]);
     }

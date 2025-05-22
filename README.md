@@ -1,3 +1,45 @@
+BANK LOAN APPLICATION SYSTEM
+List of Features:
+    1. Authentication
+Register
+Log In
+Log Out
+
+    2. Profile Page
+Get Data Information
+
+    3. Admin Page
+    3. 1 Manage User
+Get User Data
+Add User Data
+Edit User Data
+Delete User Data
+
+    3.2 User Status Page
+Get Pending User Status Data
+Add Pending User Status Data
+Edit Pending User Status Data
+Delete Pending User Status Data
+
+    3.3 Application Page
+GET Application Data
+Add Application Data
+Edit Application Data
+Delete Application Data
+
+    3.4 Application Status Page
+Get Application Status
+Ads Application Status
+Edit Application Status
+Dete LApplicationoan Status
+
+    4.Role Page
+Get Role Data
+Add Role Data
+Edit Role Data
+Delete Role Data
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

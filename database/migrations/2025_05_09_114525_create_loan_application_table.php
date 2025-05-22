@@ -11,19 +11,29 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loan_application', function (Blueprint $table) {
+        Schema::create('loan_applications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('loan_status_id')->constrained('loan_statuses')->onDelete('cascade');
             $table->foreignId('loan_type_id')->constrained('loan_types')->onDelete('cascade');
             $table->string('amount');
-            $table->string('tenure_value');
-            $table->string('tenure_unit');
             $table->string('interest_rate');
-            $table->timestamp('application_date')->nullable();
+            $table->timestamps();
         });
 
-        // Remove incorrect seeding data for loan_application
+        $users = [
+            [
+                'user_id' => 1,
+                'loan_status_id' => 3,
+                'loan_type_id' => 2,
+                'amount' => '10000',
+                'interest_rate' => '0.5',
+            ],
+        ];
+
+        foreach($users as $user) {
+            Loan_application::create($user);
+        }
 
     }
 
@@ -33,7 +43,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('loan_application');
+        Schema::dropIfExists('loan_applications');
         Schema::enableForeignKeyConstraints();
     }
 };

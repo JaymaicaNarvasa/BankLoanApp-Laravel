@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\LoanStatus;
 
-class LoanStatusController extends Controller
+class ApplicationStatusController extends Controller
 {
     public function getLoanStatuses() {
         $statuses = LoanStatus::all();

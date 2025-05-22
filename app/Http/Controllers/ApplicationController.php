@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Loan_application;
 
-class LoanController extends Controller
+class ApplicationController extends Controller
 {
     public function getLoans() {
         $loans = Loan_application::with('user', 'Status', 'Type')->get();
@@ -27,10 +27,7 @@ class LoanController extends Controller
             'loan_status_id' => $request->loan_status_id,
             'loan_type_id' => $request->loan_type_id,
             'amount' => $request->amount,
-            'tenure_value' => $request->tenure_value,
-            'tenure_unit' => $request->tenure_unit,
             'interest_rate' => $request->interest_rate,
-            'application_date' => now()->toDateString(),
         ]);
 
         return response()->json(['message' => 'Loan application successfully added!', 'loan' => $loan]);
@@ -71,8 +68,6 @@ class LoanController extends Controller
             'loan_status_id' => ['required', 'exists:loan_statuses,id'],
             'loan_type_id' => ['required', 'exists:loan_types,id'],
             'amount' => ['required', 'numeric'],
-            'tenure_value' => ['required', 'integer'],
-            'tenure_unit' => ['required', 'string'],
             'interest_rate' => ['required', 'numeric'],
             'application_date' => ['date'],
         ]);
